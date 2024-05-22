@@ -1,5 +1,6 @@
 package com.vistar.streamcinema.config;
 
+import com.vistar.streamcinema.entity.Role;
 import com.vistar.streamcinema.exception_handler.CustomAccessDeniedHandler;
 import com.vistar.streamcinema.exception_handler.CustomAuthenticationEntryPoint;
 import lombok.RequiredArgsConstructor;
@@ -44,6 +45,7 @@ public class SecurityConfig {
                         .requestMatchers(uri + "/logout").authenticated()
                         .requestMatchers(uri + "/**").permitAll()
                         //.requestMatchers("/**").permitAll() //отключает секьюр
+                        .requestMatchers("/api/v1/users/**").hasRole(Role.ADMIN.name())
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session

@@ -23,4 +23,3 @@ public class Jwt {
     @JoinColumn(name = "user_id")
     private Users user;
 }
-
